@@ -14,7 +14,7 @@ class Phrase {
 	createPhraseList(phrase) {
 		let phraseArray = phrase.replace(/[^a-z\s]/, '').split('')
 		for (let i = 0; i < phraseArray.length; i++) {
-			phraseArray[i] = /[a-z]/.test(phraseArray[i]) ? `<li class="hide letter">${phraseArray[i]}</li>` : '<li class="space"> </li>';
+			phraseArray[i] = /[a-z]/.test(phraseArray[i]) ? `<li class="hide letter ${phraseArray[i]}">${phraseArray[i]}</li>` : '<li class="space"> </li>';
 		}
 		return phraseArray
 	}
@@ -40,11 +40,9 @@ class Phrase {
     * @param  {string}  single letter from keyboard or mouse click (on virtual keyboard)
     **/
 	showMatchedLetter(letter) {
-		let phLetters = PhraseUL.querySelectorAll('li')
+		let phLetters = PhraseUL.querySelectorAll(`.${letter}`)
 		for (let i = 0; i < phLetters.length; i++) {
-			if (phLetters[i].textContent == letter) {
-				phLetters[i].className = 'show'
-			}
+				phLetters[i].className = 'show';
 		}
 	}
 }

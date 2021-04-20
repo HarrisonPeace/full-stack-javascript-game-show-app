@@ -91,7 +91,7 @@ class Game {
 	checkForWin() {
 		let phLetters = PhraseUL.querySelectorAll('li');
 		for (let i = 0; i < phLetters.length; i++) {
-			if (phLetters[i].className == 'hide letter') {
+			if (phLetters[i].classList.contains('hide')) {
 				return
 			}
 		}
@@ -106,6 +106,7 @@ class Game {
 	gameOver(win) {
 		let overlay = document.getElementById('overlay');
 		let gameOverMessage = document.getElementById('game-over-message');
+		overlay.style.display = 'flex';
 		if (win) {
 			overlay.className = 'win'
 			gameOverMessage.innerHTML = `You Win :)<br><br><i>The phase was: "${this.activePhrase.phrase}"</i>`
@@ -115,8 +116,8 @@ class Game {
 			gameOverMessage.innerHTML = `You Lose :(<br><br><i>The phase was: "${this.activePhrase.phrase}"</i>`;
 			startBtn.innerHTML = 'Try Again?';
 		}
-		overlay.style.display = 'flex';
 		this.resetGame();
+		startBtn.focus();
 	}
 	
 	/**

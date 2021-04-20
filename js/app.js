@@ -3,6 +3,7 @@
 const game = new Game();
 const PhraseUL = document.getElementById('phrase-ul');
 const startBtn = document.getElementById('btn__reset');
+startBtn.focus();
 
 /**
 * Checks to see if click event occured on a virtual keyboard key.

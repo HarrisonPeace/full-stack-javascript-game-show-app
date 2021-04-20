@@ -144,13 +144,13 @@ button {
   border-radius: 5px;
   font-size: var(--font-size-medium);
   color: var(--color-main-text);
-  cursor: none;
+  cursor: default;
 }
 
 .wrong {
   background: var(--color-lose);
   color: var(--color-main-text);
-  cursor: none;
+  cursor: default;
 }
 
 .btn__reset {
@@ -169,7 +169,6 @@ button {
   border-bottom: solid 4px rgba(0, 0, 0, 0);
   border-right: solid 3px rgba(0, 0, 0, 0);
 }
-
 
 /* Overlay */
 
