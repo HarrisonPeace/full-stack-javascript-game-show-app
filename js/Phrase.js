@@ -12,7 +12,7 @@ class Phrase {
 	* @return {string} 
     **/
 	createPhraseList(phrase) {
-		let phraseArray = phrase.replace(/[^a-z\s]/, '').split('')
+		let phraseArray = phrase.replace(/[^a-z\s]/, '').split('');
 		for (let i = 0; i < phraseArray.length; i++) {
 			phraseArray[i] = /[a-z]/.test(phraseArray[i]) ? `<li class="hide letter ${phraseArray[i]}">${phraseArray[i]}</li>` : '<li class="space"> </li>';
 		}
@@ -23,7 +23,7 @@ class Phrase {
     * Appends converted phrase HTML text to phrase-ul element 
     **/
 	addPhraseToDisplay() {
-		PhraseUL.insertAdjacentHTML('afterbegin', this.HTMLphrase.join(''))
+		PhraseUL.insertAdjacentHTML('afterbegin', this.HTMLphrase.join(''));
 	}
 	
 	/**

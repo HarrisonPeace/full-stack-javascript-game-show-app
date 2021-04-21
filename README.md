@@ -13,6 +13,7 @@ No frameworks or plugins.
 -OOP (Object-Oriented Programming)<br>
 -Accessible design
 
+
 ## Installation
 Download the files and open index.html on any tested browser.
 
@@ -24,5 +25,5 @@ Tested and working. Opera on Desktop (75.0.3969.171) Chrome (89.0.4389.128) Fire
 Feel free to download and use files / code 
 
 ## Credits
-TreeHouse - HTML and CSS Files<br>
+TreeHouse - HTML and CSS<br>
 Harrison Peace - JavaScript

@@ -31,8 +31,30 @@ class Game {
 	* Adding event listners for both mouse clicks and keydown events.
     **/
 	startGame() {
+		document.getElementById('overlay').style.display = 'none';
 		this.activePhrase = new Phrase(this.getRandomPhrase(this.phrases));
 		this.activePhrase.addPhraseToDisplay();
+		virtualKeyboard.addEventListener('click', this.handleInteraction);
+		document.addEventListener('keydown', this.handleInteraction);
+	}
+	
+	/**
+	* $$-- Note "game" is used instead of "this" as using this points to event object and not the game object --$$
+	* Handles user intertaction
+	* converts e to letter or key
+	* Will then only pass data to next functions if object is a single letter
+	* @param  {object}  event object
+	**/
+	handleInteraction(e) {
+		if(e.type == 'click') {
+			e = e.target.textContent;
+        } else {
+            e = e.key
+        }
+        if (/^[A-Za-z]$/.test(e)) {
+            game.handleLetter(e);
+            game.keysPressed.push(e);
+        }
 	}
 	
     /**
@@ -44,11 +66,11 @@ class Game {
     handleLetter(letter) {
         if(this.activePhrase.checkLetter(letter)) {
             this.activePhrase.showMatchedLetter(letter);
-            this.disableKey(letter, true)
+            this.disableKey(letter, true);
             this.checkForWin();
         } else { 
-            this.disableKey(letter, false)
-            this.removeLife()
+            this.disableKey(letter, false);
+            this.removeLife();
         }
     }
 	
@@ -63,9 +85,9 @@ class Game {
 			if(keys[i].textContent == letter) {
 				keys[i].setAttribute('disabled', 'true');
 				if (inPhrase) {
-					keys[i].className = 'key chosen'
+					keys[i].className = 'key chosen';
 				} else {
-					keys[i].className = 'key wrong'
+					keys[i].className = 'key wrong';
 				}
 				break;
 			}
@@ -92,10 +114,10 @@ class Game {
 		let phLetters = PhraseUL.querySelectorAll('li');
 		for (let i = 0; i < phLetters.length; i++) {
 			if (phLetters[i].classList.contains('hide')) {
-				return
+				return;
 			}
 		}
-		this.gameOver(true)
+		this.gameOver(true);
 	}
 	
 	/**
@@ -121,15 +143,12 @@ class Game {
 	}
 	
 	/**
-    * Resets all variables
+    * Removes active phrase from page
 	* Changes all lives back to liveheart.png
 	* Re-enables all keys
 	* Removes event listeners to avoid change in game state
     **/
 	resetGame() {
-		this.missed = 0;
-		this.activePhrase = null;
-		this.keysPressed = [];
 		PhraseUL.innerHTML = '';
 		let lifes = document.querySelectorAll('.tries img');
 		for (let i = 0; i < lifes.length; i++) {
@@ -138,9 +157,9 @@ class Game {
 		let keys = document.getElementById('qwerty').querySelectorAll('button');
 		for(let i = 0; i < keys.length; i++) {
 			keys[i].removeAttribute('disabled');
-			keys[i].className = 'key'
+			keys[i].className = 'key';
 		}
-		document.getElementById('qwerty').removeEventListener('click', handleInteractionClick)
-		document.removeEventListener('keydown', handleInteractionKey)
+		virtualKeyboard.removeEventListener('click', this.handleInteraction);
+		document.removeEventListener('keydown', this.handleInteraction);
 	}
 }
