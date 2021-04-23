@@ -1,5 +1,5 @@
 ## <h1>Game Show App</h1>
-##
+<br>
 
 ## Build status
 Completed
@@ -13,7 +13,7 @@ No frameworks or plugins.
 -OOP (Object-Oriented Programming)<br>
 -Accessible design
 
-##Style Changes
+## Style Changes
 -I made css style changes to the following aspects of the game<br>
 -Colors: changed main background color and win color
 -Removed background color of QWERTY vertual keyboard untill they have been clicked
