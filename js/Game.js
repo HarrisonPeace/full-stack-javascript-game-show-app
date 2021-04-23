@@ -42,37 +42,25 @@ class Game {
 	* $$-- Note "game" is used instead of "this" as using this points to event object and not the game object --$$
 	* Handles user intertaction
 	* converts e to letter or key
-	* Will then only pass data to next functions if object is a single letter
-	* @param  {object}  event object
+	* Will then only pass data to next functions if object is a single letter and hasnt been pressed before
 	**/
 	handleInteraction(e) {
-		if(e.type == 'click') {
-			e = e.target.textContent;
-        } else {
-            e = e.key
-        }
-        if (/^[A-Za-z]$/.test(e)) {
-            game.handleLetter(e);
-            game.keysPressed.push(e);
+		let letter;
+		e.type == 'click' ? letter = e.target.textContent : letter = e.key.toLowerCase();
+        if (/^[a-z]$/.test(letter) && game.keysPressed.indexOf(letter) == -1) {
+            game.keysPressed.push(letter);
+			if(game.activePhrase.checkLetter(letter)) {
+				game.activePhrase.showMatchedLetter(letter);
+            	game.disableKey(letter, true);
+            	if (game.checkForWin()) {
+					game.gameOver(true)
+				}
+			} else { 
+            	game.disableKey(letter, false);
+            	game.removeLife();
+        	}
         }
 	}
-	
-    /**
-    * Checks to see if letter is contained in active phrase
-    * If so: passes letter pressed into showMatchedLetter, disables letter and checks for win
-    * If not: disables letter and removes a life
-    * @param  {string}  letter clicked or pressed
-    **/
-    handleLetter(letter) {
-        if(this.activePhrase.checkLetter(letter)) {
-            this.activePhrase.showMatchedLetter(letter);
-            this.disableKey(letter, true);
-            this.checkForWin();
-        } else { 
-            this.disableKey(letter, false);
-            this.removeLife();
-        }
-    }
 	
 	/**
     * disables key clicked or pressed
@@ -114,10 +102,10 @@ class Game {
 		let phLetters = PhraseUL.querySelectorAll('li');
 		for (let i = 0; i < phLetters.length; i++) {
 			if (phLetters[i].classList.contains('hide')) {
-				return;
+				return false;
 			}
 		}
-		this.gameOver(true);
+		return true;
 	}
 	
 	/**
