@@ -14,10 +14,13 @@ No frameworks or plugins.
 -Accessible design
 
 ## Style Changes
--I made css style changes to the following aspects of the game<br>
--Colors: changed main background color and win color
--Removed background color of QWERTY vertual keyboard untill they have been clicked
--Made made all text uppercase
+-I made css style changes to the following aspects of the game:<br>
+-Colors: 
+     -Changed main background color and win color
+     -Removed background color of QWERTY vertual keyboard untill they have been clicked
+     -Changed text color to off grey
+-Made all text uppercase
+-Changed colors of hearts to match win color
 
 ## Installation
 Download the files and open index.html on any tested browser.
