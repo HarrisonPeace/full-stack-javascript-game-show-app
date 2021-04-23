@@ -16,11 +16,11 @@ No frameworks or plugins.
 ## Style Changes
 -I made css style changes to the following aspects of the game:<br>
 -Made all text uppercase<br>
--Changed colors of hearts to match win color
+-Changed colors of hearts to match win color<br>
 -Colors:<br>
      -Changed main background color and win color<br>
      -Removed background color of QWERTY vertual keyboard untill they have been clicked<br>
-     -Changed text color to off grey<br>
+     -Changed text color to off grey
 
 
 ## Installation
