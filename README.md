@@ -13,6 +13,11 @@ No frameworks or plugins.
 -OOP (Object-Oriented Programming)<br>
 -Accessible design
 
+##Style Changes
+-I made css style changes to the following aspects of the game<br>
+-Colors: changed main background color and win color
+-Removed background color of QWERTY vertual keyboard untill they have been clicked
+-Made made all text uppercase
 
 ## Installation
 Download the files and open index.html on any tested browser.
